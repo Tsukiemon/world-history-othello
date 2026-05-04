@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>世界史オセロ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="play-area" aria-label="世界史オセロ">
+      <header class="topbar">
+        <div>
+          <p class="kicker">History Circle Welcome Game</p>
+          <h1>世界史オセロ</h1>
+        </div>
+        <div class="scoreboard" aria-label="スコア">
+          <div class="score blue"><span class="dot"></span><strong id="blueScore">2</strong><small>青チーム</small></div>
+          <div class="score red"><span class="dot"></span><strong id="redScore">2</strong><small>赤チーム</small></div>
+        </div>
+      </header>
+      <div class="status-strip">
+        <div>
+          <span id="turnBadge" class="turn-badge blue">青の番</span>
+          <p id="statusText">置きたいマスを選び、そのマスに合う世界史イベントを入力してください。</p>
+        </div>
+        <button id="resetButton" type="button" title="新しい対局">↻</button>
+      </div>
+      <div id="boardShell" class="board-shell" aria-label="地域と年代つき6マスオセロ盤"></div>
+    </section>
+    <aside class="study-panel" aria-label="イベント判定と履歴">
+      <section class="judge-box">
+        <p class="panel-label">AI Judge</p>
+        <h2 id="judgeTitle">マスを選択</h2>
+        <p id="judgeText" class="question">選んだマスの地域・年代に合う事件、王朝、人物、戦争、革命などを入力します。</p>
+        <form id="eventForm" class="event-form">
+          <label for="eventInput">イベント名</label>
+          <input id="eventInput" type="text" autocomplete="off" placeholder="例: 十字軍、元寇、ロシア革命">
+          <button id="judgeButton" type="submit" disabled>判定</button>
+        </form>
+        <p id="judgeFeedback" class="feedback" aria-live="polite"></p>
+        <div id="manualReview" class="manual-review" hidden>
+          <p>データベースに存在しないため、インターネット等で調査を行ってください。調査結果を選んでください。</p>
+          <div>
+            <button id="manualCorrectButton" type="button">正解</button>
+            <button id="manualWrongButton" type="button">不正解</button>
+          </div>
+        </div>
+      </section>
+      <section class="timeline">
+        <p class="panel-label">Move Log</p>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </aside>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
